@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Mi Bitel ver2</string>
+
+    <string name="title_home">Inicio</string>
+    <string name="title_tend">Tendencias</string>
+    <string name="title_bibli">Biblioteca</string>
+    <string name="title_you">Yo</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="title_video_category">Videos</string>
+    <string name="recently_viewed">Vistos recientemente</string>
+    <string name="history">Historial de visualización</string>
+    <string name="liked_video">Me gustan</string>
+    <string name="saved_video">Guardado para ver más tarde</string>
+    <string name="sample">text_sample</string>
+
+    <string name="history_content_description">history</string>
+    <string name="liked_content_description">liked</string>
+    <string name="saved_content_description">saved</string>
+    <string name="arrow">arrow</string>
+    <string name="line">line</string>
+    <string name="top_main">main_top</string>
+    <string name="fab_category_button">fab_categoryBtn</string>
+</resources>

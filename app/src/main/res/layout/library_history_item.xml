@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="308dp"
+    android:layout_height="200dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    card_view:cardCornerRadius="15dp"
+    card_view:cardBackgroundColor="#f8fbfb"
+    android:elevation="0dp"
+    card_view:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="62dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            card_view:cardCornerRadius="20dp"
+            card_view:layout_constraintStart_toStartOf="parent">
+
+<!--            display video view-->
+            <ImageView
+                android:id="@+id/library_history_iV"
+                android:layout_width="290dp"
+                android:layout_height="148dp"
+                android:background="@color/cardview_dark_background"
+                android:paddingStart="18dp"
+                android:paddingLeft="18dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:src="@drawable/triangle" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView1"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginEnd="308dp"
+            android:layout_marginRight="308dp"
+            android:layout_marginBottom="8dp"
+            android:elevation="0dp"
+            card_view:cardCornerRadius="20dp"
+            card_view:cardElevation="0dp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.132"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/cardView"
+            card_view:layout_constraintVertical_bias="0.914">
+
+            <ImageView
+                android:id="@+id/library_history_user_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/user_placeholder" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/library_history_nameNTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tomorrowland #RelaxHouse #Music.."
+            android:textColor="#000000"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.677"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/cardView"
+            card_view:layout_constraintVertical_bias="0.323" />
+
+        <TextView
+            android:id="@+id/library_history_video_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Diego Guadalupe"
+            android:textColor="#8697a8"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.261"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/cardView"
+            card_view:layout_constraintVertical_bias="0.763" />
+
+        <TextView
+            android:id="@+id/library_history_nOViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="50,345 vistas"
+            android:textColor="#8697a8"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.602"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/cardView"
+            card_view:layout_constraintVertical_bias="0.763" />
+
+        <TextView
+            android:id="@+id/library_history_time_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="hace 3 días"
+            android:textColor="#8697a8"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.887"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/cardView"
+            card_view:layout_constraintVertical_bias="0.763" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
