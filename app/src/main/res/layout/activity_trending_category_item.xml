@@ -14,17 +14,16 @@
         <androidx.cardview.widget.CardView
             android:id="@id/cardView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/trending_category_item_iv"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/cardview_dark_background"
-                android:src="@drawable/triangle" />
+                <ImageView
+                    android:id="@+id/videoAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/splash"/>
         </androidx.cardview.widget.CardView>
 
 <!--CardView chua user icon-->

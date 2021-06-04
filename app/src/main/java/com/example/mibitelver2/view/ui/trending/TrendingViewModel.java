@@ -1,19 +1,13 @@
 package com.example.mibitelver2.view.ui.trending;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class TrendingViewModel extends ViewModel {
+import com.example.mibitelver2.model.Video;
 
-    private MutableLiveData<String> mText;
+import java.util.List;
 
-    public TrendingViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
-    }
+public class TrendingViewModel extends ViewModel{
 
-    public LiveData<String> getText() {
-        return mText;
-    }
+
 }

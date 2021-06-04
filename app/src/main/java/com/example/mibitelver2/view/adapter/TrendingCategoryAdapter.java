@@ -1,20 +1,31 @@
 package com.example.mibitelver2.view.adapter;
 
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mibitelver2.R;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mibitelver2.R;
+import com.example.mibitelver2.model.VideoByCategory;
+import com.example.mibitelver2.utils.GlideLoader;
+
 import org.jetbrains.annotations.NotNull;
 
-public class TrendingCategoryAdapter extends RecyclerView.Adapter<TrendingCategoryAdapter.TrendingCategoryHolder> {
+import java.util.List;
+
+public class TrendingCategoryAdapter extends
+        RecyclerView.Adapter<TrendingCategoryAdapter.TrendingCategoryHolder>{
+
+    List<VideoByCategory> videos;
+
+    public TrendingCategoryAdapter(List<VideoByCategory> videos) {
+        super();
+        this.videos = videos;
+    }
 
     @NonNull
     @NotNull
@@ -26,32 +37,38 @@ public class TrendingCategoryAdapter extends RecyclerView.Adapter<TrendingCatego
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull TrendingCategoryAdapter.TrendingCategoryHolder holder, int position) {
-        holder.iv.setImageResource(R.drawable.splash);
-        holder.icon.setImageResource(R.drawable.user);
-        holder.name.setText("Tomorrowland #RelaxHouse #Music..");
-        holder.noView.setText("noView");
-        holder.time.setText("3 days ago");
-        holder.owner.setText("Someone's name");
+    public void onBindViewHolder(@NonNull @NotNull TrendingCategoryAdapter
+            .TrendingCategoryHolder holder, int position) {
+
+        holder.name.setText(videos.get(position).getData().getTitle());
+        holder.noView.setText(videos.get(position).getData().getTotalView());
+        //holder.time.setText(videos.get(position).getData().);
+        //holder.owner.setText(videos.get(position).getData().);
+        GlideLoader glideLoader = new GlideLoader();
+        glideLoader.loadPicture(videos.get(position).getData().getLinkVerticalCoverImage(),
+                holder.imageView, holder.imageView.getContext());
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        if(videos != null){
+            return videos.size();
+        }
+        return 0;
     }
 
-    public class TrendingCategoryHolder extends RecyclerView.ViewHolder {
+    public static class TrendingCategoryHolder extends RecyclerView.ViewHolder {
 
-        ImageView iv;
         TextView name;
         ImageView icon;
         TextView owner;
         TextView noView;
         TextView time;
+        ImageView imageView;
 
         public TrendingCategoryHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            iv = itemView.findViewById(R.id.trending_category_item_iv);
+            imageView = itemView.findViewById(R.id.videoAvatar);
             name = itemView.findViewById(R.id.trending_category_videoTitle);
             icon = itemView.findViewById(R.id.trending_category_user_icon);
             owner = itemView.findViewById(R.id.trending_category_videOwner);

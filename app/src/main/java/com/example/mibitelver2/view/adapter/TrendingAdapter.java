@@ -11,16 +11,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mibitelver2.R;
+import com.example.mibitelver2.model.Video;
 import com.example.mibitelver2.utils.Constants;
 import com.example.mibitelver2.view.TrendingCategoryActivity;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import static com.example.mibitelver2.R.string.sample;
 
 public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.TrendingHolder> {
+
+    private List<Video> videos = new ArrayList<>();
 
     public TrendingAdapter() {
 
@@ -48,6 +53,9 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.Trendi
         return 3;
     }
 
+    public void setVideos(List<Video> videos) {
+        this.videos = videos;
+    }
     @NonNull
     @NotNull
     @Override

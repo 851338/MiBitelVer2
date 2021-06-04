@@ -1,5 +1,6 @@
 package com.example.mibitelver2.view.adapter;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mibitelver2.R;
+import com.example.mibitelver2.model.Video;
+import com.example.mibitelver2.utils.GlideLoader;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.LibraryHolder> {
 
-    public LibraryAdapter() {
+    private List<Video> videos;
+
+    public LibraryAdapter(List<Video> videos) {
         super();
+        this.videos = videos;
     }
 
     @NonNull
@@ -30,17 +38,28 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.LibraryH
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull LibraryAdapter.LibraryHolder holder, int position) {
-        holder.iV.setImageResource(R.drawable.splash);
-        holder.nameTag.setText("Something #TestA");
+        Video currentVideo = videos.get(position);
+        GlideLoader glideLoader = new GlideLoader();
+        glideLoader.loadPicture(videos.get(position).getAvatar(),
+                holder.iV, holder.iV.getContext());
+        holder.nameTag.setText(currentVideo.getTitle());
         holder.user.setImageResource(R.drawable.user);
-        holder.nOViews.setText("nOViews");
-        holder.timeUpload.setText("3 days ago");
-        holder.owner.setText("video owner");
+        holder.nOViews.setText(currentVideo.getCategory_id());
+        holder.timeUpload.setText(currentVideo.getId());
+        holder.owner.setText(currentVideo.getCategory_id());
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        if(videos != null){
+            return videos.size();
+        }
+        return 0;
+    }
+
+    public void setVideos(List<Video> videos) {
+        this.videos = videos;
+        notifyDataSetChanged();
     }
 
     static class LibraryHolder extends RecyclerView.ViewHolder {

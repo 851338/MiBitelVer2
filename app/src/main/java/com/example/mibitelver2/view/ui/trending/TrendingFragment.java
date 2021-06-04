@@ -7,13 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mibitelver2.R;
 import com.example.mibitelver2.databinding.FragmentTrendingBinding;
+import com.example.mibitelver2.model.Video;
 import com.example.mibitelver2.view.adapter.TrendingAdapter;
+
+import java.util.List;
 
 public class TrendingFragment extends Fragment {
 

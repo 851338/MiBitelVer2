@@ -1,19 +1,22 @@
 package com.example.mibitelver2.view.ui.library;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.mibitelver2.model.Video;
+
+import java.util.List;
+
+import retrofit2.Call;
 
 public class LibraryViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
 
     public LibraryViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        super();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<Video>> getAllVideos() {
+        return null;
     }
 }
