@@ -21,10 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
-            android:layout_marginLeft="17dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="184dp"
-            android:layout_marginRight="184dp"
             android:lineSpacingExtra="1sp"
             android:text="@string/recently_viewed"
             android:textColor="#2b3a4a"
@@ -69,7 +67,7 @@
         <com.google.android.material.card.MaterialCardView
             android:clickable="true"
             app:checkedIconTint="@color/app_gradient_color"
-            android:id="@+id/library_history_cv"
+            android:id="@+id/library_watched_cv"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:elevation="0dp"
@@ -81,13 +79,13 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.531">
+            app:layout_constraintVertical_bias="0.531"
+            android:focusable="true">
 
             <ImageView
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginStart="18dp"
-                android:layout_marginLeft="18dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/library_1"
                 android:contentDescription="@string/history_content_description" />
@@ -96,7 +94,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
-                android:layout_marginLeft="60dp"
                 android:layout_marginTop="22dp"
                 android:text="@string/history"
                 android:textColor="#415263"
@@ -107,33 +104,34 @@
                 android:layout_width="22dp"
                 android:layout_height="12dp"
                 android:layout_marginStart="314dp"
-                android:layout_marginLeft="314dp"
                 android:layout_marginTop="25dp"
                 android:contentDescription="@string/arrow"
                 android:src="@drawable/forward" />
         </com.google.android.material.card.MaterialCardView>
 
         <!--        Press to view saved videos-->
+
         <com.google.android.material.card.MaterialCardView
-            android:clickable="true"
-            app:checkedIconTint="@color/app_gradient_color"            android:id="@+id/library_liked_cv"
+            android:id="@+id/library_liked_cv"
             android:layout_width="match_parent"
             android:layout_height="65dp"
+            android:clickable="true"
             android:elevation="0dp"
             app:cardBackgroundColor="#f8fbfb"
             app:cardElevation="0dp"
+            app:checkedIconTint="@color/app_gradient_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.641">
+            app:layout_constraintVertical_bias="0.656"
+            android:focusable="true">
 
             <ImageView
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginStart="18dp"
-                android:layout_marginLeft="18dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/library_2"
                 android:contentDescription="@string/liked_content_description" />
@@ -142,7 +140,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
-                android:layout_marginLeft="60dp"
                 android:layout_marginTop="22dp"
                 android:text="@string/liked_video"
                 android:textColor="#415263"
@@ -153,32 +150,32 @@
                 android:layout_width="22dp"
                 android:layout_height="12dp"
                 android:layout_marginStart="314dp"
-                android:layout_marginLeft="314dp"
                 android:layout_marginTop="25dp"
                 android:contentDescription="@string/arrow"
                 android:src="@drawable/forward" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:clickable="true"
-            app:checkedIconTint="@color/app_gradient_color"            android:id="@+id/library_saved_cv"
+            android:id="@+id/library_saved_cv"
             android:layout_width="match_parent"
             android:layout_height="65dp"
+            android:clickable="true"
             android:elevation="0dp"
             app:cardBackgroundColor="#f8fbfb"
             app:cardElevation="0dp"
+            app:checkedIconTint="@color/app_gradient_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.752">
+            app:layout_constraintVertical_bias="0.78"
+            android:focusable="true">
 
             <ImageView
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginStart="18dp"
-                android:layout_marginLeft="18dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/library_3"
                 android:contentDescription="@string/saved_content_description" />
@@ -187,31 +184,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
-                android:layout_marginLeft="60dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/saved_video"
                 android:textColor="#415263"
                 android:textSize="13sp"
                 android:textStyle="normal" />
 
-<!--            textView no Videos-->
+            <!--            textView no Videos-->
             <TextView
                 android:id="@+id/fragment_library_savedVideoTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="35dp"
                 android:fontFamily="sans-serif"
-                android:textStyle="normal"
-                android:textSize="11sp"
                 android:textColor="#fb624a"
-                tools:text="@string/sample"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="35dp"/>
+                android:textSize="12sp"
+                android:textStyle="normal"
+                tools:text="@string/sample" />
 
             <ImageView
                 android:layout_width="22dp"
                 android:layout_height="12dp"
                 android:layout_marginStart="314dp"
-                android:layout_marginLeft="314dp"
                 android:layout_marginTop="25dp"
                 android:contentDescription="@string/arrow"
                 android:src="@drawable/forward" />

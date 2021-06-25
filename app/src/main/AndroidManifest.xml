@@ -3,18 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mibitelver2">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiBitelVer2"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".view.ui.library.WatchLaterActivity"
+            android:theme="@style/Theme.MiBitelVer2.NoActionBar"/>
+        <activity android:name=".view.ui.library.FavoriteVideoActivity"
+            android:theme="@style/Theme.MiBitelVer2.NoActionBar"/>
+        <activity android:name=".view.ui.library.HistoryActivity"
+            android:theme="@style/Theme.MiBitelVer2.NoActionBar"/>
+        <activity
+            android:name=".view.VideoActivity"
+            android:theme="@style/Theme.MiBitelVer2.NoActionBar" />
         <activity
             android:name=".view.TrendingCategoryActivity"
             android:theme="@style/Theme.MiBitelVer2.NoActionBar" />
@@ -22,9 +32,7 @@
             android:name=".view.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.MiBitelVer2.NoActionBar" />
-        <activity android:name=".view.Interest">
-
-        </activity>
+        <activity android:name=".view.Interest" />
         <activity android:name=".view.LoginActivity" />
         <activity
             android:name=".view.SplashActivity"

@@ -1,29 +1,43 @@
 package com.example.mibitelver2.view.adapter;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mibitelver2.R;
-import com.example.mibitelver2.model.VideoByCategory;
-import com.example.mibitelver2.utils.GlideLoader;
+import com.example.mibitelver2.databinding.ActivityTrendingCategoryItemBinding;
+import com.example.mibitelver2.model.channel.Channel;
+import com.example.mibitelver2.model.channel.ChannelData;
+import com.example.mibitelver2.model.video.VideoData;
+import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
+import com.example.mibitelver2.view.VideoActivity;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class TrendingCategoryAdapter extends
-        RecyclerView.Adapter<TrendingCategoryAdapter.TrendingCategoryHolder>{
+        RecyclerView.Adapter<TrendingCategoryAdapter.TrendingCategoryHolder> {
 
-    List<VideoByCategory> videos;
+    Activity activity;
+    ChannelData channelData;
+    List<VideoData> videos;
 
-    public TrendingCategoryAdapter(List<VideoByCategory> videos) {
+    public TrendingCategoryAdapter(Activity activity, List<VideoData> videos) {
         super();
+        this.activity = activity;
         this.videos = videos;
     }
 
@@ -31,49 +45,80 @@ public class TrendingCategoryAdapter extends
     @NotNull
     @Override
     public TrendingCategoryHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_trending_category_item, parent, false);
-        return new TrendingCategoryHolder(v);
+        ActivityTrendingCategoryItemBinding binding = DataBindingUtil.inflate(
+                LayoutInflater.from(parent.getContext()), R.layout.activity_trending_category_item,
+                parent, false);
+        return new TrendingCategoryHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull TrendingCategoryAdapter
             .TrendingCategoryHolder holder, int position) {
 
-        holder.name.setText(videos.get(position).getData().getTitle());
-        holder.noView.setText(videos.get(position).getData().getTotalView());
-        //holder.time.setText(videos.get(position).getData().);
-        //holder.owner.setText(videos.get(position).getData().);
-        GlideLoader glideLoader = new GlideLoader();
-        glideLoader.loadPicture(videos.get(position).getData().getLinkVerticalCoverImage(),
-                holder.imageView, holder.imageView.getContext());
+        //Call API get channel data with videoId
+        channelData = new ChannelData();
+        APIVideoInterface api = RetrofitClient.getClient()
+                .create(APIVideoInterface.class);
+        Call<Channel> channels =
+                api.getChannelData(videos.get(position).getIdVideo());
+        channels.enqueue(new Callback<Channel>() {
+            @Override
+            public void onResponse(@NotNull Call<Channel> call,
+                                   @NotNull Response<Channel> response) {
+                assert response.body() != null;
+                channelData = response.body().getChannelData();
+                Log.e(activity.getLocalClassName(), "Load channel data");
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<Channel> call, @NotNull Throwable t) {
+                Log.e("Failed", t.toString());
+            }
+        });
+
+        VideoData currentVideo = videos.get(position);
+        holder.binding.setChannelData(channelData);
+        holder.binding.setVideoData(currentVideo);
+        holder.binding.setImgUrl(currentVideo.getLinkVerticalCoverImage());
+//        if(channelData != null) {
+//            Log.e("user image:", channelData.getPhoto());
+//            holder.binding.setUserImg(channelData.getPhoto());
+//        }
+        holder.bind(videos.get(position).getIdVideo());
     }
 
     @Override
     public int getItemCount() {
-        if(videos != null){
+        if (videos != null) {
             return videos.size();
         }
         return 0;
     }
 
-    public static class TrendingCategoryHolder extends RecyclerView.ViewHolder {
+    public void setVideos(List<VideoData> videos) {
+        this.videos = videos;
+        notifyDataSetChanged();
+    }
 
-        TextView name;
-        ImageView icon;
-        TextView owner;
-        TextView noView;
-        TextView time;
-        ImageView imageView;
+    public class TrendingCategoryHolder
+            extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TrendingCategoryHolder(@NonNull @NotNull View itemView) {
-            super(itemView);
-            imageView = itemView.findViewById(R.id.videoAvatar);
-            name = itemView.findViewById(R.id.trending_category_videoTitle);
-            icon = itemView.findViewById(R.id.trending_category_user_icon);
-            owner = itemView.findViewById(R.id.trending_category_videOwner);
-            noView = itemView.findViewById(R.id.trending_category_noView);
-            time = itemView.findViewById(R.id.trending_category_time);
+        int videoId;
+        ActivityTrendingCategoryItemBinding binding;
+
+        public TrendingCategoryHolder(ActivityTrendingCategoryItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void bind(int videoId) {
+            this.videoId = videoId;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent i = VideoActivity.newIntent(activity, videoId);
+            activity.startActivity(i);
         }
     }
 }
