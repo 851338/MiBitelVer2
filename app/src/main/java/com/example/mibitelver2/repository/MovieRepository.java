@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 
 import com.example.mibitelver2.model.video.OneVideo;
-import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.RetrofitClientMain;
 import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
 
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +21,7 @@ public class MovieRepository {
     private final APIVideoInterface apiInterface;
 
     public MovieRepository() {
-        apiInterface = RetrofitClient.getClient().create(APIVideoInterface.class);
+        apiInterface = RetrofitClientMain.getClient().create(APIVideoInterface.class);
     }
 
     public MutableLiveData<OneVideo> getVideo(int id) {

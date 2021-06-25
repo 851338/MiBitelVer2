@@ -16,7 +16,7 @@ import com.example.mibitelver2.R;
 import com.example.mibitelver2.model.allHashtag.HashtagData;
 import com.example.mibitelver2.model.oneHashtag.OneHashtag;
 import com.example.mibitelver2.model.oneHashtag.OneHtData;
-import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.RetrofitClientMain;
 import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
 import com.example.mibitelver2.util.Constants;
 import com.example.mibitelver2.view.TrendingCategoryActivity;
@@ -53,7 +53,7 @@ public class ParentTrendingAdapter extends RecyclerView.Adapter<ParentTrendingAd
 
         //call API get all data from oneHashtag
         oneHtData = new ArrayList<>();
-        APIVideoInterface api = RetrofitClient
+        APIVideoInterface api = RetrofitClientMain
                 .getClient().create(APIVideoInterface.class);
         Call<OneHashtag> dataList = api.getOneHashtagById(data.get(position).getIdHashTag());
         dataList.enqueue(new Callback<OneHashtag>() {

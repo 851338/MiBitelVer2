@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mibitelver2.R;
 import com.example.mibitelver2.model.allHashtag.AllHashtag;
 import com.example.mibitelver2.model.allHashtag.HashtagData;
-import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.RetrofitClientMain;
 import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
 import com.example.mibitelver2.view.adapter.ParentTrendingAdapter;
 
@@ -45,7 +45,7 @@ public class TrendingFragment extends Fragment {
         recyclerView.setAdapter(parentTrendingAdapter);
 
         hashtags = new ArrayList<>();
-        APIVideoInterface api = RetrofitClient
+        APIVideoInterface api = RetrofitClientMain
                 .getClient().create(APIVideoInterface.class);
 
         Call<AllHashtag> hashtagCall = api.getAllHashtag();

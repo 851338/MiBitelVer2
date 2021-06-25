@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,7 +18,7 @@ import com.example.mibitelver2.R;
 import com.example.mibitelver2.model.channel.Channel;
 import com.example.mibitelver2.model.channel.ChannelData;
 import com.example.mibitelver2.model.video.VideoData;
-import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.RetrofitClientMain;
 import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
 import com.example.mibitelver2.util.GlideLoader;
 import com.example.mibitelver2.view.VideoActivity;
@@ -58,7 +57,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
     public void onBindViewHolder(@NonNull @NotNull HistoryAdapter.HistoryHolder holder, int position) {
         //Call API get all channels with videoId
         channelData = new ChannelData();
-        APIVideoInterface api = RetrofitClient.getClient()
+        APIVideoInterface api = RetrofitClientMain.getClient()
                 .create(APIVideoInterface.class);
         Call<Channel> channels =
                 api.getChannelData(videos.get(position).getIdVideo());

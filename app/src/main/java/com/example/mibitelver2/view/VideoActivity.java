@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.mibitelver2.R;
 import com.example.mibitelver2.model.videoInfo.VideoLike;
 import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
-import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.RetrofitClientMain;
 import com.example.mibitelver2.databinding.ActivityVideoBinding;
 import com.example.mibitelver2.model.VideoUser;
 import com.example.mibitelver2.model.videoInfo.VideoInfoData;
@@ -288,7 +288,7 @@ public class VideoActivity extends AppCompatActivity {
         int videoId = getIntent().getIntExtra(Constants.video_id, 0);
 
         data = new VideoInfoData();
-        APIVideoInterface api = RetrofitClient.getClient()
+        APIVideoInterface api = RetrofitClientMain.getClient()
                 .create(APIVideoInterface.class);
         Call<VideoInfo> videoInfo = api.getVideoInfo(videoId, 2);
         videoInfo.enqueue(new Callback<VideoInfo>() {
@@ -321,7 +321,7 @@ public class VideoActivity extends AppCompatActivity {
         data.setLiked(favorite.isChecked());
         data.setWatch(watchLater.isChecked());
 
-        APIVideoInterface api = RetrofitClient.getClient()
+        APIVideoInterface api = RetrofitClientMain.getClient()
                 .create(APIVideoInterface.class);
 
         api.setVideoInfo(2, 1, data)
@@ -344,7 +344,7 @@ public class VideoActivity extends AppCompatActivity {
         int videoId = getIntent().getIntExtra(Constants.video_id, 0);
         CheckBox favorite = findViewById(R.id.activity_video_favorite);
         VideoLike videoLike = new VideoLike(favorite.isChecked(), videoId, 2);
-        APIVideoInterface api = RetrofitClient.getClient().create(APIVideoInterface.class);
+        APIVideoInterface api = RetrofitClientMain.getClient().create(APIVideoInterface.class);
         Call<VideoLike> setLike = api.setLikeVideo(videoLike);
         setLike.enqueue(new Callback<VideoLike>() {
             @Override

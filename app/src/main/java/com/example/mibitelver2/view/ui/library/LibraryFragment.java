@@ -14,10 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mibitelver2.R;
-import com.example.mibitelver2.model.video.ListVideo;
 import com.example.mibitelver2.model.video.RecentlyViewedVideo;
 import com.example.mibitelver2.model.video.VideoData;
-import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.RetrofitClientMain;
 import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
 import com.example.mibitelver2.view.adapter.LibraryAdapter;
 
@@ -52,7 +51,7 @@ public class LibraryFragment extends Fragment {
         adapter = new LibraryAdapter(this.getActivity(), videos);
         recyclerView.setAdapter(adapter);
 
-        APIVideoInterface api = RetrofitClient.getClient()
+        APIVideoInterface api = RetrofitClientMain.getClient()
                 .create(APIVideoInterface.class);
         Call<RecentlyViewedVideo> videoList = api.getRecentVideos(3, 0, 5);
         videoList.enqueue(new Callback<RecentlyViewedVideo>() {

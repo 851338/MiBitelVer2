@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mibitelver2.R;
 import com.example.mibitelver2.model.video.RecentlyViewedVideo;
 import com.example.mibitelver2.model.video.VideoData;
-import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.RetrofitClientMain;
 import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
 import com.example.mibitelver2.util.NetworkStateReceiver;
 import com.example.mibitelver2.view.BaseActivity;
@@ -63,7 +63,7 @@ public class HistoryActivity extends BaseActivity
     }
 
     private void getData(int offset) {
-        APIVideoInterface api = RetrofitClient.getClient()
+        APIVideoInterface api = RetrofitClientMain.getClient()
                 .create(APIVideoInterface.class);
         Call<RecentlyViewedVideo> listVideos = api.getRecommendVideo(offset, limit);
         listVideos.enqueue(new Callback<RecentlyViewedVideo>() {

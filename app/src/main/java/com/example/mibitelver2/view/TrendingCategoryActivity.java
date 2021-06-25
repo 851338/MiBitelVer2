@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mibitelver2.R;
 import com.example.mibitelver2.model.video.VideoData;
 import com.example.mibitelver2.model.video.ListVideo;
-import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.RetrofitClientMain;
 import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
 import com.example.mibitelver2.util.Constants;
 import com.example.mibitelver2.view.adapter.TrendingCategoryAdapter;
@@ -47,7 +47,7 @@ public class TrendingCategoryActivity extends BaseActivity {
         TextView category = findViewById(R.id.trending_category_categoryTv);
 
         allVideos = new ArrayList<>();
-        APIVideoInterface api = RetrofitClient
+        APIVideoInterface api = RetrofitClientMain
                 .getClient().create(APIVideoInterface.class);
 
         Call<ListVideo> videos = api.getAllVideosByCategory();

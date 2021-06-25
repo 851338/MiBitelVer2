@@ -16,7 +16,7 @@ import com.example.mibitelver2.databinding.ActivityTrendingCategoryItemBinding;
 import com.example.mibitelver2.model.channel.Channel;
 import com.example.mibitelver2.model.channel.ChannelData;
 import com.example.mibitelver2.model.video.VideoData;
-import com.example.mibitelver2.retrofit.RetrofitClient;
+import com.example.mibitelver2.retrofit.RetrofitClientMain;
 import com.example.mibitelver2.retrofit.retrofitInterface.APIVideoInterface;
 import com.example.mibitelver2.view.VideoActivity;
 
@@ -57,7 +57,7 @@ public class TrendingCategoryAdapter extends
 
         //Call API get channel data with videoId
         channelData = new ChannelData();
-        APIVideoInterface api = RetrofitClient.getClient()
+        APIVideoInterface api = RetrofitClientMain.getClient()
                 .create(APIVideoInterface.class);
         Call<Channel> channels =
                 api.getChannelData(videos.get(position).getIdVideo());
